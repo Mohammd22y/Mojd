@@ -1,40 +1,80 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الرفيق معلمك ولاك</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #000;
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: gold;
-        }
-        h1 {
-            font-size: 50px;
-            text-align: center;
-            text-shadow: 2px 2px 10px rgba(255, 215, 0, 0.6);
-            letter-spacing: 2px;
-            font-family: 'Times New Roman', serif;
-        }
-        .decorative {
-            font-size: 60px;
-            color: gold;
-            text-shadow: 4px 4px 15px rgba(255, 215, 0, 0.8);
-            position: absolute;
-            top: 10%;
-            right: 10%;
-            transform: rotate(-20deg);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الرفيق معلمك</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>الرفيق معلمك ولاك</h1>
-    <div class="decorative">✨</div>
+  <div class="stars"></div>
+  <div class="container">
+    <h1>الرفيق معلمك</h1>
+  </div>
 </body>
 </html>
+/* خلفية سوداء ونجوم متلألئة */
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: black;
+  color: #FFD700;
+  font-family: 'Arial', sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  direction: rtl;
+  position: relative;
+}
+
+.container {
+  z-index: 2;
+  text-align: center;
+}
+
+h1 {
+  font-size: 4rem;
+  text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+/* تأثير اللمعان */
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700;
+  }
+  to {
+    text-shadow: 0 0 20px #FFA500, 0 0 40px #FFD700;
+  }
+}
+
+/* النجوم */
+.stars {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0; left: 0;
+  background: transparent;
+  z-index: 1;
+}
+
+.stars::after {
+  content: "✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨";
+  font-size: 2rem;
+  color: #fffacd;
+  position: absolute;
+  animation: twinkle 3s linear infinite;
+  white-space: nowrap;
+  left: 50%;
+  top: 10%;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.5; transform: translateX(-50%) translateY(0); }
+  50% { opacity: 1; transform: translateX(-50%) translateY(10px); }
+}
